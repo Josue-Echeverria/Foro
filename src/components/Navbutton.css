@@ -1,0 +1,12 @@
+#navbarButton{    
+    background-color: white;
+    color: grey;
+    border: none;
+    padding: 0.5em;
+    cursor: pointer;
+    filter: brightness(1);
+}
+  
+#navbarButton:hover {
+    filter: brightness(0.8);
+}

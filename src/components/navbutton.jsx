@@ -1,24 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import "./Navbutton.css"
 
 function NavButton(props) {
-  const [hover, setHover] = useState(false);
-
-  const style = {
-    backgroundColor: hover ? 'grey' : 'white',
-    color: hover ? 'white' : 'grey',
-    border: 'none',
-    padding: '0.5em',
-    cursor: 'pointer'
-  };
 
   return (
-    <button
-      style={style}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      {props.title}
-    </button>
+    <Link to={`/${props.dir}`}>
+      <button id="navbarButton">
+        {props.title}
+      </button>
+    </Link>
   );
 }
 

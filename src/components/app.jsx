@@ -1,20 +1,26 @@
 import React from 'react';
-import Navbar from "./navbar";
-
-
+import { Route, Routes, Navigate} from "react-router-dom";
+import Inicio from './inicio/Inicio';
+import Organizacion from './organizacion/Organizacion';
+import Laboratorios from './laboratorios/Laboratorios';
+import Webmail from './webmail/Webmail';
+import Foro from './foro/Foro';
+import ITCR from './itcr/Itcr';
+import Contactenos from './contactenos/Contactenos';
 
 function App() {
-  const styles = {
-    width: "20%",
-    height: "20%",
-    top: "10px",
-    left: "10px",
-    padding: "40px",
-    backgroundColor: "white"
-  };
   return (
     <div className="App">
-      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Navigate to="/inicio" />} />
+        <Route path="/inicio" element={<Inicio />} />
+        <Route path="/organizacion" element={<Organizacion />} />
+        <Route path="/laboratorios" element={<Laboratorios />} />
+        <Route path="/webmail" element={<Webmail />} />
+        <Route path="/foro" element={<Foro />} />
+        <Route path="/itcr" element={<ITCR />} />
+        <Route path="/contactenos" element={<Contactenos />} />
+       </Routes> 
       
     </div>
   );
