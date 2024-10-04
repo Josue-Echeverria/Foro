@@ -1,0 +1,54 @@
+.navbar-inner{
+	background-color: white;
+	padding: 5px;
+	margin-top: 5px;
+	border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+	font-family: Arial;
+	font-size: 13px;
+}
+
+.ingresar{
+	border-color: white;
+    display: flex;
+	gap: 7px;
+}
+
+.ingresar p{
+	margin: 2px;
+}
+
+.foro-router{
+    display: flex;
+    flex-direction: row;
+	gap: 5px;
+}
+
+.popup-content {
+    width: fit-content !important;
+    padding: 10px;
+}
+
+.modal{
+	display: flex;
+    width: fit-content;
+	flex-direction: column;
+    font-family: "Inter", sans-serif;
+    gap:10px
+}
+
+.modal > .close {
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+}

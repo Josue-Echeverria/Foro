@@ -6,7 +6,9 @@ function Inicio(){
     useEffect(() =>{
         setButtonPressed("Inicio") 
     }); 
-    return <div>Inicio</div>
+    return <div>
+        
+        Inicio</div>
 };
 
 export default Inicio;
