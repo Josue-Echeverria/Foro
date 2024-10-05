@@ -52,3 +52,22 @@
     border-radius: 18px;
     border: 1px solid #cfcece;
 }
+
+ul{
+    padding:0;
+}
+
+.foro{
+	background-color: white;
+    padding: 20px;
+}
+
+.headerDescriptionForo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-top: solid 1px rgb(161, 161, 161);
+    border-bottom: solid 1px rgb(161, 161, 161);
+    padding-right: 20px;
+    padding-left: 20px;
+}

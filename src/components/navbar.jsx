@@ -1,5 +1,6 @@
 import React from 'react';
 import NavButton from './Navbutton';
+import './Navbar.css'
 
 export function setButtonPressed(nombre){
   const botones = document.querySelector("#botonesNavbar").childNodes
