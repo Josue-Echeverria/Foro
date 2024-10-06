@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { setButtonPressed } from '../Navbar';
 import Popup from 'reactjs-popup';
+import { useParams } from 'react-router-dom';
 import 'reactjs-popup/dist/index.css';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import './Foro.css'
@@ -8,19 +9,18 @@ import Folder from './Folder';
 
 
 function Foro() {
-    const [data, setData] = useState(null); // Initialize data state
-    function getFolders() {// TODO : Sacar los datos de la base de datos
+    const [data, setData] = useState(null); 
+    const { curso, sede } = useParams();
+    function getSedes() {// TODO : Sacar los datos de la base de datos
         return [{ "id":1
                 , "title": "Sedes"
-                , "moderator": "Josue Perez"
                 , "totalTopics": "77777"
-                , "folders" : ["Arky", "FOC", "BD2"]
+                , "folders" : ["Cartago", "San Carlos", "San Jose", "Limon", "Alajuela"]
                 , "lastPost": { "title": "ranking final"
                             , "author": "manchitas"
                             , "date": "25-10-2024" } },
                 { "id":1
                     ,"title": "Bienvenidos"
-                    , "moderator": "Josue Perez"
                     , "totalTopics": "8888877"
                 , "folders" : ["CAL", "CDI", "BD1"]
                     , "lastPost": { "title": "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -28,10 +28,60 @@ function Foro() {
                                 , "date": "25-10-2024" } }]
     }
 
+    function getCursos(sede) {// TODO : Sacar los datos de la base de datos
+        return [
+            { "id":1
+                , "title": "IC-1400 Fundamentos de Organización de Computadoras"
+                , "totalTopics": "77777"
+                , "folders" : []
+                , "lastPost": { "title": "ranking final"
+                            , "author": "manchitas"
+                            , "date": "25-10-2024" } },
+            { "id":1
+                , "title": "IC-1802 Introducción a la Programación"
+                , "totalTopics": "8888877"
+                , "folders" : []
+                    , "lastPost": { "title": "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                , "author": "Huog"
+                                , "date": "25-10-2024" } },
+            { "id":1
+                , "title": "IC-1803 Taller de Programación"
+                , "totalTopics": "8888877"
+                , "folders" : []
+                , "lastPost": { "title": "Hol1"
+                                , "author": "Huog"
+                                , "date": "25-10-2024" } },
+            { "id":1
+                , "title": "IC-2001 Estructura de Datos"
+                , "totalTopics": "8888877"
+                , "folders" : []
+                    , "lastPost": { "title": "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                , "author": "Huog"
+                                , "date": "25-10-2024" } },
+            { "id":1
+                , "title": "IC-2101 Programacion Orientada a Objetos"
+                , "totalTopics": "8888877"
+                , "folders" : []
+                    , "lastPost": { "title": "Holaaaaa"
+                                , "author": "Huog"
+                                , "date": "25-10-2024" } },
+        ]
+    }
+
+
+
     useEffect(() => {
         setButtonPressed("Foro");
-        let categories = getFolders();
-        setData(categories);
+        if(sede != undefined){
+            let cursos = getCursos(sede);
+            setData(cursos)
+            if(curso != undefined){
+
+            }
+        }else{
+            let sedes = getSedes();
+            setData(sedes);
+        }
     }, []);
 
     return <div className="foro">
@@ -75,7 +125,6 @@ function Foro() {
                     key={item.id}
                     title={item.title}
                     folder={item.folders}
-                    moderator={item.moderator}
                     totalTopics={item.totalTopics}
                     lastPost={item.lastPost}
                 />

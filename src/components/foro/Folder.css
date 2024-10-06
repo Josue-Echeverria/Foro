@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     border-bottom: solid 1px  rgb(161, 161, 161);
+    margin-bottom: 10px;
 }
 
 .Folder *{
