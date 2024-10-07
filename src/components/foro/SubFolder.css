@@ -3,16 +3,6 @@
     margin: 0;
 }
 
-#subFolderTitle{
-    text-align: center;
-    align-content: center;
-    filter: brightness(1);
-}
-
-#subFolderTitle>:hover{
-    filter: brightness(0.8);
-}
-
 .SubFolder{
     display: flex;
     flex-direction: row;

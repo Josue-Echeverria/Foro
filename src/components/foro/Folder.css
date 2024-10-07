@@ -16,6 +16,7 @@
     justify-content: center;
     font-size: 25px;
     width: 5%;
+    margin-top: 2px;
 }
 
 .FolderInfo{
@@ -37,4 +38,21 @@
 
 .lastPost p{
     font-size: 0.8rem;
+}
+
+.title{
+    font-size:x-large;
+}
+
+.subtitle{
+    font-size:medium;
+}
+
+.link{
+    color: #000;
+    text-decoration: none;
+}
+
+.link:hover{
+    text-decoration: underline;
 }

@@ -18,10 +18,10 @@ function App() {
         <Route path="/laboratorios" element={<Laboratorios />} />
         <Route path="/webmail" element={<Webmail />} />
         <Route path="/foro" element={<Foro />} />
-        <Route path="/foro/:sede" element={<Foro />} />
-        <Route path="/foro/:sede/:curso" element={<Foro />} />
-        <Route path="/foro/:sede/:curso/:semestre" element={<Foro />} />
-        <Route path="/foro/:sede/:curso/:semestre/:post" element={<Foro />} />
+        <Route path="/foro/:param1" element={<Foro />} />
+        <Route path="/foro/:param1/:param2" element={<Foro />} />
+        <Route path="/foro/:param1/:param2/:param3" element={<Foro />} />
+        <Route path="/foro/:param1/:param2/:param3/:param4" element={<Foro />} />
         <Route path="/itcr" element={<ITCR />} />
         <Route path="/contactenos" element={<Contactenos />} />
        </Routes> 

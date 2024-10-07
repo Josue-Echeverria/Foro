@@ -7,13 +7,16 @@ function Folder(props){
     useEffect(() => {
         setData();
     }, []);
-
+    
+    function enterFolder(){
+        window.location.replace(`http://localhost:3000/foro/${props.title}`)
+    }
     return <div className="Folder">
         <div className='icon'>
             <i className="fa-solid fa-folder-open"></i>
         </div>
         <div className='FolderInfo'>
-            <h2>{props.title}</h2>
+            <a href={`http://localhost:3000/foro/${props.title}`}  className="title link" id="folderTitle">{props.title}</a>
             <ul className='subFolders'>
             {props.folder.map((item) => (
                 <SubFolder title={item}/>

@@ -7,10 +7,9 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import './Foro.css'
 import Folder from './Folder';
 
-
 function Foro() {
     const [data, setData] = useState(null); 
-    const { curso, sede } = useParams();
+    const { param1, param2 } = useParams();
     function getSedes() {// TODO : Sacar los datos de la base de datos
         return [{ "id":1
                 , "title": "Sedes"
@@ -37,28 +36,28 @@ function Foro() {
                 , "lastPost": { "title": "ranking final"
                             , "author": "manchitas"
                             , "date": "25-10-2024" } },
-            { "id":1
+            { "id":2
                 , "title": "IC-1802 Introducción a la Programación"
                 , "totalTopics": "8888877"
                 , "folders" : []
                     , "lastPost": { "title": "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                                 , "author": "Huog"
                                 , "date": "25-10-2024" } },
-            { "id":1
+            { "id":3
                 , "title": "IC-1803 Taller de Programación"
                 , "totalTopics": "8888877"
                 , "folders" : []
                 , "lastPost": { "title": "Hol1"
                                 , "author": "Huog"
                                 , "date": "25-10-2024" } },
-            { "id":1
+            { "id":4
                 , "title": "IC-2001 Estructura de Datos"
                 , "totalTopics": "8888877"
                 , "folders" : []
                     , "lastPost": { "title": "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                                 , "author": "Huog"
                                 , "date": "25-10-2024" } },
-            { "id":1
+            { "id":5
                 , "title": "IC-2101 Programacion Orientada a Objetos"
                 , "totalTopics": "8888877"
                 , "folders" : []
@@ -72,10 +71,10 @@ function Foro() {
 
     useEffect(() => {
         setButtonPressed("Foro");
-        if(sede != undefined){
-            let cursos = getCursos(sede);
+        if(param1 != undefined){
+            let cursos = getCursos(param1);
             setData(cursos)
-            if(curso != undefined){
+            if(param2 != undefined){
 
             }
         }else{
@@ -132,6 +131,7 @@ function Foro() {
             </ul>
         )}
         </div>
+        Foro<p></p>
         Foro
     </div>
 };

@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import "./Navbutton.css"
 
 function NavButton(props) {
-
+  function enterFolder(){
+    window.location.replace(`http://localhost:3000/${props.title}`)
+  }
   return (
-    <Link to={`/${props.dir}`}>
-      <button id="navbarButton">
+      <button id="navbarButton" onClick={enterFolder}>
         {props.title}
       </button>
-    </Link>
   );
 }
 
