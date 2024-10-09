@@ -7,9 +7,13 @@ body {
     justify-content:center;
     align-items:center;
 	font-family: Arial;
-    font-size: medium;
+    font-size: small;
     overflow: auto; 
 }
 button{
-    font-size: medium;
+    font-size: small;
+}
+#root{
+    width: 80%;
+    max-width: 1054px;
 }
