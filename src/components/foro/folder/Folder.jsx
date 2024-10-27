@@ -14,12 +14,11 @@ function Folder(props){
             <i className="fa-solid fa-folder-open"></i>
         </div>
         <div className='FolderInfo'>
-            {/* <a href={props.link}   id="folderTitle">{props.title}</a> */}
-            {/* <Link to={props.link} className="title link">{props.title}</Link> */}
+            <Link to={props.link} className="title link">{props.title}</Link>
 
             <ul className='subFolders'>
             {props.folder.map((item) => (
-                <SubFolder link={`/foro/sede/${item}`} title={item}/>
+                <SubFolder link={`/foro/sede/${item.id}`} title={item.title}/>
                 ))}
             </ul>
         </div>
