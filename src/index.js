@@ -2,9 +2,9 @@ import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
-import NavBar from "./components/Navbar";
 import HeaderImage from './img/header.jpg';
 import "./style.css";
+import NavBar from "./components/navbar/Navbar";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>

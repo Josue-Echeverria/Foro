@@ -1,0 +1,14 @@
+#navbarButton{    
+    background-color: white;
+    color: grey;
+    border: none;
+    padding: 0.7em;
+    cursor: pointer;
+    filter: brightness(1);
+    border-radius: 2px;
+    margin-left: 10px;
+}
+  
+#navbarButton:hover {
+    filter: brightness(0.8);
+}

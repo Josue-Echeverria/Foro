@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { setButtonPressed } from '../Navbar';
+import { setButtonPressed } from '../navbar/Navbar';
 
 function Laboratorios(){
     useEffect(() =>{

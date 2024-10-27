@@ -7,6 +7,9 @@ import Webmail from './webmail/Webmail';
 import Foro from './foro/Foro';
 import ITCR from './itcr/Itcr';
 import Contactenos from './contactenos/Contactenos';
+import Sede from './foro/sede/Sede';
+import Curso from './foro/curso/Curso';
+import Post from './foro/post/Post';
 
 function App() {
   return (
@@ -17,11 +20,12 @@ function App() {
         <Route path="/organizacion" element={<Organizacion />} />
         <Route path="/laboratorios" element={<Laboratorios />} />
         <Route path="/webmail" element={<Webmail />} />
-        <Route path="/foro" element={<Foro />} />
-        <Route path="/foro/:param1" element={<Foro />} />
-        <Route path="/foro/:param1/:param2" element={<Foro />} />
-        <Route path="/foro/:param1/:param2/:param3" element={<Foro />} />
-        <Route path="/foro/:param1/:param2/:param3/:param4" element={<Foro />} />
+        <Route path="/foro" element={<Foro />}>
+          <Route path="/foro/sede" element={<Sede />} />
+          <Route path="/foro/sede/:sedeId" element={<Sede />} />
+          <Route path="/foro/sede/:sedeId/curso/:cursoId" element={<Curso />} />
+          <Route path="/foro/sede/:sedeId/curso/:cursoId/post/:postId" element={<Post />} />
+        </Route>
         <Route path="/itcr" element={<ITCR />} />
         <Route path="/contactenos" element={<Contactenos />} />
        </Routes> 

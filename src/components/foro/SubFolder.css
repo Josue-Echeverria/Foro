@@ -1,9 +1,0 @@
-.SubFolder .icon{
-    font-size: medium;
-    margin: 0;
-}
-
-.SubFolder{
-    display: flex;
-    flex-direction: row;
-}
