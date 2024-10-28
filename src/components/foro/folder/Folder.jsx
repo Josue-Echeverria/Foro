@@ -15,10 +15,9 @@ function Folder(props){
         </div>
         <div className='FolderInfo'>
             <Link to={props.link} className="title link">{props.title}</Link>
-
             <ul className='subFolders'>
-            {props.folder.map((item) => (
-                <SubFolder link={`/foro/sede/${item.id}`} title={item.title}/>
+            {props.folder.map((subFolder) => (
+                <SubFolder link={`${props.sublink}${subFolder.id}`} title={subFolder.title}/>
                 ))}
             </ul>
         </div>

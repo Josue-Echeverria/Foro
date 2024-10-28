@@ -78,6 +78,7 @@ function Sede() {
             {sedes && sedes.map((sede) => (
                 <Folder 
                     link={`/foro/sede/`} 
+                    sublink={`/foro/sede/`} 
                     title={sede.title} 
                     folder={sede.folders} 
                     lastPost={sede.lastPost}
@@ -86,6 +87,7 @@ function Sede() {
             {cursos && cursos.map((curso) => (
                 <Folder 
                     link={`/foro/sede/${sedeId}/curso/${curso.id}`} 
+                    sublink={`/foro/sede/${sedeId}/curso/${curso.id}/post/`} 
                     title={curso.title} 
                     folder={curso.folders} 
                     lastPost={curso.lastPost}
