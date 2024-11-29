@@ -38,7 +38,7 @@ function Sede() {
                 , "title": "IC-1802 Introducción a la Programación"
                 , "totalTopics": "8888877"
                 , "folders" : [{"id":1, "title":"proyecto final"}]
-                    , "lastPost": { "title": "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    , "lastPost": { "title": "Hola aaaaaaaa aaaaaaa aaaaaa aaaaaa"
                                 , "author": "Huog"
                                 , "date": "25-10-2024" } },
             { "id":3
@@ -52,7 +52,7 @@ function Sede() {
                 , "title": "IC-2001 Estructura de Datos"
                 , "totalTopics": "8888877"
                 , "folders" : [{"id":1, "title":"proyecto final"}]
-                    , "lastPost": { "title": "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    , "lastPost": { "title": "Hola aaaaaaa aaaaaaa aaaaaaa aaaaaa"
                                 , "author": "Huog"
                                 , "date": "25-10-2024" } },
             { "id":5

@@ -1,6 +1,10 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import './Breadcrumbs.css';
+
+
+
+
 function Breadcrumbs() {
   const location = useLocation();
 
@@ -10,12 +14,22 @@ function Breadcrumbs() {
   // Genera la ruta acumulativa para cada segmento
   const createPath = (index) => `/${pathSegments.slice(0, index + 1).join('/')}`;
 
+  // Combina segmentos según el formato deseado
+  const combinedSegments = [];
+  for (let i = 0; i < pathSegments.length; i++) {
+    if (i > 0 && !isNaN(pathSegments[i])) {
+      combinedSegments[combinedSegments.length - 1] += ` ${pathSegments[i]}`;
+    } else {
+      combinedSegments.push(pathSegments[i]);
+    }
+  }
+
   return (
     <nav className='breadcrumb' aria-label="breadcrumb">
-      {pathSegments.map((segment, index) => (
+      {combinedSegments.map((segment, index) => (
         <div key={index} className="breadcrumb-item">
-            <i class="fa-solid fa-chevron-right"></i>
-          {index === pathSegments.length - 1 ? (
+          <i className="fa-solid fa-chevron-right"></i>
+          {index === combinedSegments.length - 1 ? (
             // Último segmento no es un link (ruta actual)
             <span>{segment}</span>
           ) : (
