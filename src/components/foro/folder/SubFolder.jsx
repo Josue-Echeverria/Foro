@@ -8,12 +8,9 @@ function SubFolder(props){
     useEffect(() => {
         setData();
     }, []);
-    function enterFolder(){
-        window.location.replace(`${process.env.FORO_DOMAIN}/foro/${props.title}`)
-    }
     return <div className="SubFolder">
     <div className='icon'>
-        <i className="fa-solid fa-folder-open" onClick={enterFolder}></i>
+        <i className="fa-solid fa-folder-open"></i>
     </div>
     <a href={`${props.link}`} className='subtitle link'>{props.title}</a>
     </div>

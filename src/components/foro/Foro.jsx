@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import Popup from 'reactjs-popup';
-import { doSignInWithEmailAndPassword } from '../../firebase/auth';
+import { doCreateUserWithEmailAndPassword, doSignInWithEmailAndPassword } from '../../firebase/auth';
 import 'reactjs-popup/dist/index.css';
 import { setButtonPressed } from '../navbar/Navbar';
 import './Foro.css'
@@ -15,14 +15,15 @@ function Foro() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        setButtonPressed("Foro");
-        if(sedeId === undefined && cursoId === undefined && postId === undefined)
-          navigate('/foro/sede');
+      setButtonPressed("Foro");
+      if(sedeId === undefined && cursoId === undefined && postId === undefined)
+        navigate('/foro/sede');
     }, []);
 
 
     return (
         <div className="foro">
+
           <div className="navbar-inner">
             <div className="foro-router">
               <i className="fa-solid fa-house"></i>
@@ -35,7 +36,10 @@ function Foro() {
               {close => (
                 <div className="modal">
                   <button className="close" onClick={close}>&times;</button>
-                  <form onSubmit={doSignInWithEmailAndPassword}>
+                  <form onSubmit={(event) => {
+                    event.preventDefault();
+                    doCreateUserWithEmailAndPassword(userName, password);
+                  }}>
                     <input 
                       type="userName"
                       className="userName"
