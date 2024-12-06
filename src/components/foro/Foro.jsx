@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useParams, useNavigate } from 'react-router-dom';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import Popup from 'reactjs-popup';
-import { doCreateUserWithEmailAndPassword, doSignInWithEmailAndPassword } from '../../firebase/auth';
-import 'reactjs-popup/dist/index.css';
-import { setButtonPressed } from '../navbar/Navbar';
-import './Foro.css'
+import { doCreateUserWithEmailAndPassword, doSignInWithEmailAndPassword, doSignInWithGoogle, doSignOut } from '../../firebase/auth';
+import { useAuth } from '../../context/authcontext';
 import Breadcrumbs from './breadcrumbs/Breadcrumbs';
+import { setButtonPressed } from '../navbar/Navbar';
+import 'reactjs-popup/dist/index.css';
+import './Foro.css'
+
 
 function Foro() {
     const { sedeId, cursoId, postId } = useParams();
+    const { userLoggedIn } = useAuth();
     const [ userName, setUsername ] = useState(null);
     const [ password, setPassword ] = useState(null);
+    const { currentUser } = useAuth()
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,67 +23,74 @@ function Foro() {
         navigate('/foro/sede');
     }, []);
 
+    const handleSignIn = async (event) => { 
+      event.preventDefault();
+      try {
+        await doSignInWithGoogle();
+        // navigate('/foro/sede');
+      } catch (error) {
+        console.error("Error al iniciar sesión con Google:", error);
+      } 
+    };
 
+    const handleLogout = async () => {
+      try {
+        await doSignOut();
+        // navigate('/foro/sede');
+      } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+      }
+    }
     return (
         <div className="foro">
-
           <div className="navbar-inner">
             <div className="foro-router">
               <i className="fa-solid fa-house"></i>
               <Breadcrumbs />
             </div>
-            <Popup 
-              trigger={<button className="ingresar"><i className="fa-solid fa-user"></i><p>Identificarse</p></button>} 
-              position={"top center"}
-            >
-              {close => (
-                <div className="modal">
-                  <button className="close" onClick={close}>&times;</button>
-                  <form onSubmit={(event) => {
-                    event.preventDefault();
-                    doCreateUserWithEmailAndPassword(userName, password);
-                  }}>
-                    <input 
-                      type="userName"
-                      className="userName"
-                      value={userName}
-                      onChange={(e) => setUsername(e.target.value)}
-                      placeholder="Nombre de usuario"
-                      required
-                    />
-                    <input
-                      type="password"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Contraseña" 
-                      required
-                    />
-                    <button type='submit'>Sign Up</button>
-                  </form>
-                  <a href="#">Forgot username?</a>
-                  <a href="#">Forgot password?</a>
-                  <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
-                    <GoogleLogin
-                      onSuccess={credentialResponse => {
-                        console.log(credentialResponse);
-                      }}
-                      onError={() => {
-                        console.log('Login Failed');
-                      }}
-                    />
-                  </GoogleOAuthProvider>
+            { userLoggedIn ? (
+                <div className='profile'>
+                  <img src={currentUser.photoURL} alt="profile" className='profilePhoto'/>
+                  <p>{currentUser.displayName}</p>
+                  <i onClick={handleLogout} class="fa-solid fa-right-from-bracket"></i>
                 </div>
-              )}
-            </Popup>
+            ):(
+              <Popup 
+                trigger={<button className="ingresar"><i className="fa-solid fa-user"></i><p>Identificarse</p></button>} 
+                position={"top center"}
+              >
+                {close => (
+                  <div className="modal">
+                    <button className="close" onClick={close}>&times;</button>
+                    <form 
+                      className='formLogin'
+                      onSubmit={(handleSignIn)}
+                    >
+                      <input 
+                        type="userName"
+                        className="userName"
+                        value={userName}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="Nombre de usuario"
+                        // required
+                      />
+                      <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Contraseña" 
+                        // required
+                      />
+                      <button type='submit'>Iniciar sesion</button>
+                    </form>
+                    <a href="#">¿Olvidaste la contraseña?</a>
+                  </div>
+                )}
+              </Popup>
+            )}
           </div>
-          
-          <div className='headerDescriptionForo'>
-            <p>Folder</p>
-            <p>Last Post</p>
-          </div>
-    
-          <div id="workspace">
+          <div className="workspace">
             <Outlet />
           </div>
         </div>
