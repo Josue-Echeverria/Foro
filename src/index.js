@@ -9,7 +9,7 @@ import { AuthProvider } from "./context/authcontext";
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
       <BrowserRouter>
-        <img src={HeaderImage} alt="Insitituto Tecnologico de Costa Rica Escuela de computacion Unidad de Administracion de laboratorios" />
+        <img src={HeaderImage} id="headerImage" alt="Instituto Tecnológico de Costa Rica Escuela de computación Unidad de Administracion de laboratorios" />
         <NavBar />
         <AuthProvider>
           <App />

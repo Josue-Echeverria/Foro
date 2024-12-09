@@ -1,0 +1,40 @@
+.popup-content {
+    width: fit-content !important;
+    padding: 10px;
+}
+
+.modal{
+	display: flex;
+    width: fit-content;
+	flex-direction: column;
+    font-family: "Inter", sans-serif;
+    gap:10px
+}
+.modal > .popup-close {
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+}
+
+.formLogin{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formLogin input{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+}
+
+.formLogin .error{
+    width: 250px;
+}

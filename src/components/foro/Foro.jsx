@@ -7,13 +7,12 @@ import Breadcrumbs from './breadcrumbs/Breadcrumbs';
 import { setButtonPressed } from '../navbar/Navbar';
 import 'reactjs-popup/dist/index.css';
 import './Foro.css'
+import IdentificarseForm from './identificarse/IdentificarseForm';
 
 
 function Foro() {
     const { sedeId, cursoId, postId } = useParams();
     const { userLoggedIn } = useAuth();
-    const [ userName, setUsername ] = useState(null);
-    const [ password, setPassword ] = useState(null);
     const { currentUser } = useAuth()
     const navigate = useNavigate();
 
@@ -23,24 +22,7 @@ function Foro() {
         navigate('/foro/sede');
     }, []);
 
-    const handleSignIn = async (event) => { 
-      event.preventDefault();
-      try {
-        await doSignInWithGoogle();
-        // navigate('/foro/sede');
-      } catch (error) {
-        console.error("Error al iniciar sesión con Google:", error);
-      } 
-    };
 
-    const handleLogout = async () => {
-      try {
-        await doSignOut();
-        // navigate('/foro/sede');
-      } catch (error) {
-        console.error("Error al cerrar sesión:", error);
-      }
-    }
     return (
         <div className="foro">
           <div className="navbar-inner">
@@ -50,44 +32,18 @@ function Foro() {
             </div>
             { userLoggedIn ? (
                 <div className='profile'>
-                  <img src={currentUser.photoURL} alt="profile" className='profilePhoto'/>
-                  <p>{currentUser.displayName}</p>
-                  <i onClick={handleLogout} class="fa-solid fa-right-from-bracket"></i>
+                  { currentUser.displayName ? (
+                    <>
+                      <img src={currentUser.photoURL} alt="profile" className='profilePhoto'/>
+                      <p>{currentUser.displayName}</p>
+                    </>
+                  ) : (
+                    <p>{currentUser.email}</p>
+                  )}
+                  <i onClick={doSignOut} class="fa-solid fa-right-from-bracket"></i>
                 </div>
             ):(
-              <Popup 
-                trigger={<button className="ingresar"><i className="fa-solid fa-user"></i><p>Identificarse</p></button>} 
-                position={"top center"}
-              >
-                {close => (
-                  <div className="modal">
-                    <button className="close" onClick={close}>&times;</button>
-                    <form 
-                      className='formLogin'
-                      onSubmit={(handleSignIn)}
-                    >
-                      <input 
-                        type="userName"
-                        className="userName"
-                        value={userName}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Nombre de usuario"
-                        // required
-                      />
-                      <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Contraseña" 
-                        // required
-                      />
-                      <button type='submit'>Iniciar sesion</button>
-                    </form>
-                    <a href="#">¿Olvidaste la contraseña?</a>
-                  </div>
-                )}
-              </Popup>
+              <IdentificarseForm/>
             )}
           </div>
           <div className="workspace">
