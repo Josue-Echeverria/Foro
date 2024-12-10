@@ -1,55 +1,46 @@
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
+import { doPasswordReset } from '../../../firebase/auth';
+import './ChangePasswordForm.css';
 
 const ChangePasswordForm = () => {
+    const [email, setEmail] = useState('');
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [alert, setAlert] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add logic to handle password change
+        doPasswordReset(email).then(() => {
+            setAlert('Se ha enviado un correo con el código de confirmación');
+        }).catch((error) => {
+            setAlert('Error: ' + error.message);
+        });
     };
 
     return (
         <Popup 
-            trigger={<a className='link'>¿Olvidaste tu contraseña?</a>}
+            trigger={<button className='buttonIdentificarse'>¿Olvidaste tu contraseña?</button>}
             position={'right center'}
             modal
         >
         {close => (
-        <form onSubmit={handleSubmit}>
+        <form className='change-password-form' onSubmit={handleSubmit}>
+            <h2>Recuperar contraseña</h2>
             <div>
-                <label htmlFor="currentPassword">Current Password</label>
+                <label htmlFor="email">Escriba su correo registrado</label>
                 <input
-                    type="password"
-                    id="currentPassword"
-                    value={currentPassword}
-                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-            </div>
-            <div>
-                <label htmlFor="newPassword">New Password</label>
-                <input
-                    type="password"
-                    id="newPassword"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="confirmPassword">Confirm New Password</label>
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                />
-            </div>
-            <button type="submit">Change Password</button>
+                {alert.length > 0 ? (<label className='alert'>{ alert }</label>) : (<></>)}
+
+             </div>
+            <button type="submit">Enviar codigo de confirmación</button>
         </form>
         )}
         </Popup>

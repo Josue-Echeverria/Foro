@@ -29,7 +29,7 @@ const buttonStyle = {
   border: "none",
   borderRadius: "5px",
   cursor: "pointer",
-  fontSize: "16px",
+  fontSize: "15px",
 };
 
 export default GoogleLoginButton;

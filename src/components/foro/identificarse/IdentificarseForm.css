@@ -38,3 +38,14 @@
 .formLogin .error{
     width: 250px;
 }
+
+.formLogin button, .buttonIdentificarse{
+    padding: 5px;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+}
+
+.formLogin button:hover{
+    background-color: #c8c8c8;
+}

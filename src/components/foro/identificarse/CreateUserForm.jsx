@@ -13,7 +13,6 @@ const CreateUserForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();        
-        console.log(passwordMatch)
         if (passwordMatch) {
             doCreateUserWithEmailAndPassword(email, password)
                 .then(() => {
@@ -32,14 +31,13 @@ const CreateUserForm = () => {
 
     return ( 
         <Popup 
-            trigger={<a className='link'>Crear cuenta</a>}
+            trigger={<button className='buttonIdentificarse'>Crear cuenta</button>}
             position={'right center'}
             modal
             nested
         >
         {close => (
         <form className='create-user-form' onSubmit={handleSubmit}>
-           
             <div>
                 <label htmlFor="email">Email:</label>
                 <input
